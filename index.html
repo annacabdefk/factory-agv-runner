@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0c0f14">
+<title>AGV 无人工厂 · 无线充电挑战</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="game"></canvas>
+
+<!-- ===== HUD ===== -->
+<div id="hud" class="hud hidden">
+  <div class="hud-left">
+    <div class="battery-label">电量</div>
+    <div class="battery"><div id="battery-bar" class="battery-bar"></div><span id="battery-num">80%</span></div>
+  </div>
+  <div class="hud-right">
+    <div class="score">交付 <b id="score-num">0</b></div>
+    <div class="hud-btns">
+      <button id="btn-mute" class="icon-btn" type="button">声音：开</button>
+      <button id="btn-pause" class="icon-btn" type="button">暂停</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 开始界面 ===== -->
+<div id="screen-start" class="overlay">
+  <div class="panel">
+    <img id="start-img" class="hero" src="assets/agv_front.png" alt="AGV 小车">
+    <h1>AGV 无人工厂</h1>
+    <p class="sub">无线充电 · 拾货配送挑战</p>
+    <ul class="tips">
+      <li><span class="dot cyan"></span>左右切换轨道，驶过充电区补充电量</li>
+      <li><span class="dot brown"></span>拾取货物，送往<span class="dot blue"></span>托盘交货</li>
+      <li>电量耗尽即失败，速度会越来越快</li>
+    </ul>
+    <div class="legend">
+      <div class="legend-item"><span class="chip" style="background:#38d9ff"></span>底充</div>
+      <div class="legend-item"><span class="chip" style="background:#2fe6b8"></span>侧充</div>
+      <div class="legend-item"><span class="chip" style="background:#6cc4ff"></span>坡道充电</div>
+    </div>
+    <div id="start-best" class="best"></div>
+    <button id="btn-start" class="btn primary" type="button">开始运行</button>
+    <p class="keys">桌面：← → 或 A D 切换 · P 暂停 · M 静音<br>手机：左右滑动切换轨道</p>
+  </div>
+</div>
+
+<!-- ===== 暂停界面 ===== -->
+<div id="screen-paused" class="overlay hidden">
+  <div class="panel">
+    <h2>已暂停</h2>
+    <button id="btn-resume" class="btn primary" type="button">继续</button>
+    <button id="btn-restart2" class="btn" type="button">重新开始</button>
+  </div>
+</div>
+
+<!-- ===== 结束界面 ===== -->
+<div id="screen-over" class="overlay hidden">
+  <div class="panel">
+    <h2>电量耗尽</h2>
+    <div class="big-score">交付 <b id="final-score">0</b></div>
+    <div id="new-record" class="record hidden">新纪录！</div>
+    <div id="final-best" class="best"></div>
+    <button id="btn-restart" class="btn primary" type="button">再来一局</button>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
